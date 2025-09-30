@@ -9,10 +9,11 @@
     body {
       margin: 0;
       font-family: 'Montserrat', 'Roboto', sans-serif;
-      background: linear-gradient(120deg, #6078ea, #a9e2f3, #fcbf49);
+      background: linear-gradient(135deg, #7f53ac 0%, #9d50bb 38%, #6e44ff 80%);
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      transition: background 1s;
     }
     .particles {
       position: fixed;
@@ -22,149 +23,261 @@
       pointer-events: none;
     }
     .container {
-      max-width: 950px;
-      margin: 48px auto;
-      background: rgba(255,255,255,0.90);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.08);
+      max-width: 980px;
+      margin: 64px auto;
+      background: rgba(255,255,255,0.93);
+      border-radius: 28px;
+      padding: 38px 40px 44px 40px;
+      box-shadow: 0 12px 36px 0 rgba(68,16,102,0.08),0 0px 0px #fff;
       z-index: 2;
       position: relative;
+      overflow: hidden;
+      /* fade-in effect */
+      opacity: 0;
+      animation: fadeInContent 1.2s ease 0.4s forwards;
     }
-    header.header {
+    @keyframes fadeInContent {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    header.navbar {
+      width: 100%;
+      background: rgba(127,83,172,0.19);
+      box-shadow: 0 2px 8px #8f4fb912;
+      position: sticky;
+      top: 0;
+      border-radius: 0 0 18px 18px;
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
+      padding: 16px 44px;
+      z-index: 10;
+      transition: background 0.5s;
+    }
+    .navbar-title {
+      font-size: 1.48em;
+      font-weight: 700;
+      color: #5d2882;
+      letter-spacing: 0.7px;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 28px;
+    }
+    .navbar-links a {
+      color: #6e44ff;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.08em;
+      transition: color 0.2s, border-bottom 0.3s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    .navbar-links a:hover, .navbar-links a.active {
+      color: #7f53ac;
+      border-bottom: 2px solid #9d50bb;
+    }
+    .header-main {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin-bottom: 42px;
+      margin-top: 22px;
     }
     .avatar {
       width: 120px;
       height: 120px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #6078ea;
-      box-shadow: 0 4px 19px #4a90e278;
+      border: 4px solid #7f53ac;
+      box-shadow: 0 4px 19px #7f53ac69;
+      transition: box-shadow 0.5s;
+      background: #8f4fb944;
     }
     .links a {
-      color: #03588c;
+      color: #5d2882;
       text-decoration: none;
       padding: 0 8px;
       font-weight: 600;
       transition: color 0.2s;
     }
-    .links a:hover { color: #fcbf49; }
+    .links a:hover { color: #9d50bb; }
     .tagline {
-      margin-top:7px;
-      font-size:1.07em;
+      margin: 10px 0;
+      font-size:1.12em;
       color:#535353;
+      font-weight: 500;
     }
-    .section {
-      margin-bottom: 36px;
+    section.section {
+      margin-top: 68px;
+      margin-bottom: 65px;
+      position: relative;
+      transition: background 0.5s;
+      padding-bottom: 10px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInSection 0.8s ease forwards;
+    }
+    section.section:nth-child(3) {animation-delay: 0.5s;}
+    section.section:nth-child(4) {animation-delay: 1s;}
+    section.section:nth-child(5) {animation-delay: 1.5s;}
+    section.section:nth-child(6) {animation-delay: 2s;}
+    section.section:nth-child(7) {animation-delay: 2.5s;}
+    @keyframes fadeInSection {
+      to {opacity: 1; transform: translateY(0);}
     }
     h1, h2, h3 {
-      color: #0b3056;
+      color: #7f53ac;
       margin-bottom: 0.7em;
       font-weight: 700;
       letter-spacing: 1px;
+      transition: color 0.4s;
     }
     .section h2 { position: relative; }
     .section h2::before {
       content: '';
       display: block;
       position: absolute;
-      width: 40px;
+      width: 48px;
       height: 4px;
-      background: linear-gradient(90deg, #a9e2f3, #0b3056);
-      top: -12px; left: 0;
+      background: linear-gradient(120deg, #9d50bb, #6e44ff);
+      top: -14px; left: 0;
       border-radius: 2px;
     }
-    .interests { margin-bottom: 18px; }
+    .interests { margin-bottom: 24px; }
     .chips {
-      display: flex; flex-wrap: wrap; gap: 8px;
+      display: flex; flex-wrap: wrap; gap: 14px;
       margin-top: 8px;
+      margin-bottom: 14px;
     }
     .chip {
-      background: #6078ea;
+      background: linear-gradient(120deg,#7f53ac 45%, #9d50bb 90%);
       color: white;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-size: 0.95em;
+      padding: 9px 17px;
+      border-radius: 15px;
+      font-size: 1em;
       font-weight: 500;
+      box-shadow: 0 2px 8px #8f4fb930;
+      letter-spacing: 0.8px;
     }
-    .info-table { width: 100%; }
-    .info-table td { padding: 6px 14px; }
+    .info-table { width: 100%; font-size:1.08em; margin-top:14px; margin-bottom:14px;}
+    .info-table td { padding: 8px 16px; }
     .timeline {
-      border-left: 3px solid #6078ea;
-      margin-left: 28px;
-      padding-left: 16px;
+      border-left: 4px solid #9d50bb;
+      margin-left: 38px;
+      padding-left: 20px;
       position: relative;
     }
     .timeline .entry {
-      margin-bottom: 18px;
+      margin-bottom: 38px;
       position: relative;
+      opacity: 0.97;
     }
     .timeline .entry::before {
       content: '';
       position: absolute;
-      left: -24px; top: 8px;
-      width: 16px; height: 16px;
-      background: #fcbf49;
+      left: -34px; top: 17px;
+      width: 20px; height: 20px;
+      background: #7f53ac;
       border-radius: 50%;
-      border: 2px solid #0b3056;
-      box-shadow: 0 2px 12px #0b305693;
+      border: 3px solid #6e44ff;
+      box-shadow: 0 2px 12px #9d50bb90;
     }
-    .contact-form {
-      margin-bottom: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .entry strong { font-size:1.16em; color:#6e44ff;}
+    .project-list {margin-top:18px;}
+    .project {
+      margin-bottom: 36px;
+      padding: 18px 20px 16px 20px;
+      background: rgba(144, 74, 207, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #7f53ac20;
+      transition: box-shadow 0.3s, background 0.5s;
+      animation: fadeInProject 0.7s ease;
     }
-    .contact-form input, .contact-form textarea {
-      padding: 10px;
-      border: 1px solid #6078ea;
-      border-radius: 8px;
-      font-size: 1em;
+    @keyframes fadeInProject {
+      from { opacity:0; transform:scale(0.98);}
+      to { opacity:1; transform:scale(1);}
     }
-    .contact-form button {
-      background: #6078ea;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s;
+    .project-title {
+      color: #7f53ac;
+      font-size: 1.11em;
+      font-weight: 700;
+      margin-bottom: 7px;
+      letter-spacing: 0.9px;
     }
-    .contact-form button:hover { background: #fcbf49; color: #0b3056; }
-    .contact-info p { margin: 2px 0;}
+    .project-stack {
+      font-size: 0.98em;
+      color: #6e44ff;
+      margin-bottom: 9px;
+      letter-spacing:0.7px;
+      font-weight:500;
+    }
+    .project-details {
+      font-size: 1.02em;
+      color:#443148;
+      margin-bottom: 5px;
+    }
+    .project-role {
+      color:#8f4fb9;
+      font-size:0.97em;
+      margin-bottom:6px;
+      font-style: italic;
+    }
+    .project-link {
+      font-size: 0.97em;
+      color: #5d2882;
+      text-decoration: underline;
+    }
+    .certifications ul {margin: 12px 0 6px 20px;}
+    .certifications li {margin-bottom: 8px;}
     footer {
       text-align: center;
-      margin-top: 24px;
-      color: #535353;
+      margin-top: 48px;
+      color: #6943b9;
+      font-size:1em;
+      padding-bottom:12px;
+      letter-spacing:1px;
+    }
+    @media (max-width: 780px){
+      .container {padding: 18px 6px;}
+      .header-main {flex-direction: column;}
+      header.navbar {padding: 14px 12px;}
+      .timeline {margin-left:10px;}
     }
   </style>
 </head>
 <body>
   <canvas class="particles" id="particlesCanvas"></canvas>
+  <header class="navbar">
+    <span class="navbar-title">Harika Yarlagadda</span>
+    <nav class="navbar-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certifications">Certifications</a>
+    </nav>
+  </header>
   <div class="container">
-    <header class="header">
-      <img src="https://avatars.githubusercontent.com/u/109342868?v=4" alt="Harika Avatar" class="avatar"/>
+    <div class="header-main" id="top">
+      <img src="https://avatars.githubusercontent.com/u/109342868?v=4" alt="Harika Avatar" class="avatar">
       <div>
         <h1>Harika Yarlagadda</h1>
         <div class="links">
-          <a href="#contact">Contact</a> ·
           <a href="mailto:harika.yarlagadda2002@gmail.com">Email</a> ·
           <a href="https://linkedin.com/in/haarika-yarlagadda" target="_blank">LinkedIn</a> ·
           <a href="https://github.com/HarikaYarly" target="_blank">GitHub</a> ·
           <a href="HarikaYarlagadda_Resume.pdf" download>Resume</a>
         </div>
-        <p class="tagline">Recent MS Computer Science graduate passionate about building solutions and extracting insights. Eager to contribute as a Developer or Analyst in the IT industry.</p>
+        <p class="tagline">Recent Computer Science graduate passionate about building scalable solutions and uncovering deep insights. Focused on Development and Analyst opportunities in the IT industry.</p>
       </div>
-    </header>
+    </div>
     <section class="section" id="about">
       <h2>About Me</h2>
-      <p>Hello! I'm Harika, a creative problem-solver with hands-on experience in developing apps and analyzing data. I excel in both independent and teamwork settings and thrive in dynamic environments where innovation matters. Driven by curiosity, I enjoy learning new technologies and applying them to real projects.</p>
+      <p>Hello! I'm Harika—a creative technologist and analyst excited to turn ideas into digital realities. My journey blends software development with data-driven analysis, where I thrive on finding elegant, robust solutions for real-world problems. With versatile project experience and a growth mindset, I’m eager to tackle challenges and bring impact to teams building the future of IT.</p>
       <div class="interests">
-        <b>Interests:</b> Software & Web Development, Data Analysis, Machine Learning, Automation, UI/UX Design, Agile Methodologies.
+        <b>Interests:</b> Software Development, Data Analytics, ML/AI, UI/UX, Cloud Services, Automation, Agile Teams.
       </div>
     </section>
     <section class="section" id="skills">
@@ -172,10 +285,12 @@
       <div class="chips">
         <span class="chip">Python</span><span class="chip">Java</span>
         <span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Node.js</span>
-        <span class="chip">SQL/MySQL</span><span class="chip">HTML/CSS</span><span class="chip">Django</span>
-        <span class="chip">Machine Learning</span><span class="chip">Deep Learning</span>
-        <span class="chip">Power BI</span><span class="chip">AWS</span><span class="chip">Data Visualization</span>
-        <span class="chip">Project Management</span>
+        <span class="chip">SQL/MySQL</span><span class="chip">HTML/CSS</span>
+        <span class="chip">Django</span><span class="chip">Machine Learning</span>
+        <span class="chip">Deep Learning</span><span class="chip">Power BI</span>
+        <span class="chip">AWS</span><span class="chip">Data Visualization</span>
+        <span class="chip">Agile</span><span class="chip">Project Management</span>
+        <span class="chip">UI/UX</span>
       </div>
     </section>
     <section class="section" id="education">
@@ -183,40 +298,61 @@
       <table class="info-table">
         <tr>
           <td><strong>University of Minnesota Duluth</strong></td>
-          <td>MS Computer Science (2023-2025)</td>
+          <td>MS Computer Science (2023–2025)</td>
           <td>CGPA: 3.87/4.0</td>
         </tr>
         <tr>
           <td><strong>Bapatla Engineering College</strong></td>
-          <td>B.Tech Computer Science (2019-2023)</td>
+          <td>B.Tech Computer Science (2019–2023)</td>
           <td>CGPA: 9.58/10.0</td>
         </tr>
       </table>
     </section>
     <section class="section" id="projects">
       <h2>Projects</h2>
-      <ul>
-        <li>
-          <b>Customer Churn Detection (ML/Analytics):</b>
-          Developed predictive models to help insurers retain customers; achieved high accuracy and actionable business insights.
-        </li>
-        <li>
-          <b>Banking System App:</b>
-          Designed secure banking software with Java and MySQL, focusing on real-time transactions and robust database management.
-        </li>
-        <li>
-          <b>Image Captioning Model:</b>
-          Built and optimized deep learning algorithms to transform visual data into descriptive text.
-        </li>
-        <li>
-          <b>BulldogOnBoard App:</b>
-          Led cross-functional team to create a mobile tool for onboarding university students, integrating event info and support.
-        </li>
-        <li>
-          <b>E-Commerce Web Platform:</b>
-          Implemented end-to-end web solutions for user authentication, dynamic product lists, and secure transactions.
-        </li>
-      </ul>
+      <div class="project-list">
+        <div class="project">
+          <div class="project-title">Auto Insurance Customer Churn Detection</div>
+          <div class="project-stack">Python · Machine Learning · Data Analytics</div>
+          <div class="project-role">Data Scientist</div>
+          <div class="project-details">
+            Built and deployed ensemble ML models to predict customer churn using real-world insurance datasets. 
+            Implemented Random Forests and XGBoost, feature engineering, and hyperparameter tuning to achieve a 74% accuracy rate. Presented insights to stakeholders with detailed visualization dashboards—directly supporting strategic retention decisions.
+          </div>
+        </div>
+        <div class="project">
+          <div class="project-title">Banking System Application</div>
+          <div class="project-stack">Java · MySQL · Backend · Security</div>
+          <div class="project-role">Full Stack Developer</div>
+          <div class="project-details">
+            Developed an end-to-end banking software platform supporting real-time transactions, secure user authentication, and account management. Optimized database performance for high throughput and implemented robust access controls and risk mitigation routines.
+          </div>
+        </div>
+        <div class="project">
+          <div class="project-title">Image Captioning Model</div>
+          <div class="project-stack">Python · Deep Learning · Computer Vision</div>
+          <div class="project-role">ML Engineer</div>
+          <div class="project-details">
+            Created a neural network capable of generating accurate natural language captions for images. Leveraged CNNs and LSTMs, improved training with transfer learning, and increased model accuracy by 20%. Benchmarked on open datasets for reproducible results.
+          </div>
+        </div>
+        <div class="project">
+          <div class="project-title">BulldogOnBoard Student App</div>
+          <div class="project-stack">Flutter · UI/UX · Agile</div>
+          <div class="project-role">Team Lead / UI Designer</div>
+          <div class="project-details">
+            Led an agile team in developing a cross-platform onboarding app for new UMN students. Designed intuitive user flows and rich interactive event displays, integrating maps, notifications, and peer support features for a smoother campus transition.
+          </div>
+        </div>
+        <div class="project">
+          <div class="project-title">E-Commerce Web Platform</div>
+          <div class="project-stack">HTML/CSS · JavaScript · Java · MySQL</div>
+          <div class="project-role">Web Developer Intern</div>
+          <div class="project-details">
+            Architected and deployed a scalable e-commerce solution with robust product catalogs, secure shopping cart transactions, user authentication, and order management. Integrated dynamic front-end features for seamless user experience.
+          </div>
+        </div>
+      </div>
     </section>
     <section class="section" id="experience">
       <h2>Professional Experience</h2>
@@ -224,21 +360,21 @@
         <div class="entry">
           <strong>Graduate Research Assistant</strong> <br>
           UMN Duluth · Aug ’24–May ’25 <br>
-          <span class="details">Created HIPAA-compliant neonatal monitoring tools using GoPro APIs, Alexa skills, and wireless integration. Analyzed usability data for healthcare innovation.</span>
+          <span class="details">Created HIPAA-compliant neonatal monitoring tools using GoPro APIs, Alexa skills, and wireless integration. Analyzed usability data, collaborated with healthcare professionals for innovation, and contributed to published research efforts.</span>
         </div>
         <div class="entry">
           <strong>Teaching Assistant, C Programming</strong> <br>
           UMN Duluth · Aug ’23–May ’24 <br>
-          <span class="details">Mentored students in programming, debugging, and effective workflows; contributed to collaborative learning sessions and course reviews.</span>
+          <span class="details">Mentored >40 students in C programming, debugging, and workflow optimization. Guided collaborative learning sessions, assisted with student projects, and streamlined grading processes for improved course outcomes.</span>
         </div>
         <div class="entry">
           <strong>Web Developer Intern</strong> <br>
           Exposys Data Labs, Bengaluru · May–Jun ’22 <br>
-          <span class="details">Developed scalable e-commerce app, managed codebases, and enhanced backend systems for security and efficiency.</span>
+          <span class="details">Developed and enhanced backend modules for a secure e-commerce app, managed codebase in Java/MySQL, and improved system efficiency for performance under high traffic.</span>
         </div>
       </div>
     </section>
-    <section class="section" id="certifications">
+    <section class="section certifications" id="certifications">
       <h2>Certifications & Courses</h2>
       <ul>
         <li>
@@ -255,25 +391,12 @@
         </li>
       </ul>
     </section>
-    <section class="section" id="contact">
-      <h2>Contact Me</h2>
-      <form class="contact-form" action="mailto:harika.yarlagadda2002@gmail.com" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required/>
-        <input type="email" name="email" placeholder="Your Email" required/>
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-      <div class="contact-info">
-        <p><b>Email:</b> harika.yarlagadda2002@gmail.com</p>
-        <p><b>Phone:</b> 612-704-2911</p>
-        <p><b>Location:</b> Minneapolis, MN</p>
-      </div>
-    </section>
     <footer>
-      <small>© 2025 Harika Yarlagadda. Built with 💙 using HTML, CSS & JS.</small>
+      <small>© 2025 Harika Yarlagadda. Built with 💜 using HTML, CSS & JS. </small>
     </footer>
   </div>
   <script>
+    // Enhanced animated particles background
     const canvas = document.getElementById('particlesCanvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles = [];
@@ -285,14 +408,14 @@
     resizeCanvas();
     function createParticles() {
       particles = [];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 85; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          r: Math.random() * 1.6 + 1.2,
-          dx: Math.random() * 0.8 - 0.4,
-          dy: Math.random() * 0.8 - 0.4,
-          color: `rgba(${100+Math.random()*120},${160+Math.random()*60},${240-Math.random()*80},0.68)`
+          r: Math.random() * 2.4 + 1.4,
+          dx: Math.random() * 1.3 - 0.65,
+          dy: Math.random() * 1.3 - 0.65,
+          color: `rgba(${120+Math.random()*40},${70+Math.random()*60},${205+Math.random()*37},0.7)`
         });
       }
     }
@@ -303,9 +426,12 @@
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
         ctx.fillStyle = p.color;
+        ctx.shadowColor = "#9d50bb";
+        ctx.shadowBlur = 8;
         ctx.fill();
         p.x += p.dx;
         p.y += p.dy;
+        // Wrap
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
@@ -314,6 +440,37 @@
       requestAnimationFrame(drawParticles);
     }
     drawParticles();
+
+    // Smooth scroll and navbar highlight
+    document.querySelectorAll('.navbar-links a').forEach(link=>{
+      link.addEventListener('click',function(e){
+        e.preventDefault();
+        const section = document.querySelector(link.getAttribute('href'));
+        if(section){
+          window.scrollTo({top:section.offsetTop-68,behavior:'smooth'});
+        }
+      });
+    });
+    function highlightNavbarSection(){
+      const sections = Array.from(document.querySelectorAll('.section'));
+      const scrollY = window.scrollY;
+      let current = null;
+      sections.forEach(s=>{
+        if(scrollY + 120 > s.offsetTop){current = s.getAttribute('id');}
+      });
+      document.querySelectorAll('.navbar-links a').forEach(link=>{
+        link.classList.toggle('active',link.getAttribute('href').slice(1)===current);
+      });
+    }
+    window.addEventListener('scroll',highlightNavbarSection);
+
+    // Fade transitions for navigation and page
+    document.querySelectorAll('.navbar-links a').forEach(link=>{
+      link.addEventListener('click',function(){
+        document.querySelector('.container').style.opacity = '0.85';
+        setTimeout(()=>{document.querySelector('.container').style.opacity = '1';},350);
+      });
+    });
   </script>
 </body>
 </html>
