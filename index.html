@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harika Yarlagadda Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      background: linear-gradient(120deg, #4a90e2, #a9e2f3, #fcbf49);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .container {
+      max-width: 950px;
+      margin: 48px auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.08);
+      z-index: 2;
+      position: relative;
+    }
+    h1, h2, h3 {
+      color: #0b3056;
+      margin-bottom: 0.7em;
+      margin-top: 0.7em;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #4a90e2;
+      box-shadow: 0 4px 19px #4a90e278;
+    }
+    .links a {
+      color: #03588c;
+      text-decoration: none;
+      padding: 0 8px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .links a:hover { color: #fcbf49; }
+    .section {
+      margin-bottom: 36px;
+    }
+    .info-table { width: 100%; }
+    .info-table td { padding: 6px 14px; }
+    .chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 8px;
+    }
+    .chip {
+      background: #4a90e2;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.95em;
+      font-weight: 500;
+    }
+    /* Animation for section headers */
+    .section h2 { position: relative; }
+    .section h2::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 40px;
+      height: 4px;
+      background: linear-gradient(90deg, #a9e2f3, #0b3056);
+      top: -12px; left: 0;
+      border-radius: 2px;
+    }
+    /* Timeline for experience */
+    .timeline {
+      border-left: 3px solid #4a90e2;
+      margin-left: 28px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .timeline .entry {
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .timeline .entry::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 8px;
+      width: 16px; height: 16px;
+      background: #fcbf49;
+      border-radius: 50%;
+      border: 2px solid #0b3056;
+      box-shadow: 0 2px 12px #0b305693;
+    }
+  </style>
+</head>
+<body>
+<canvas class="particles" id="particlesCanvas"></canvas>
+<div class="container">
+  <div class="header">
+    <img src="https://avatars.githubusercontent.com/u/109342868?v=4" alt="Harika Avatar" class="avatar">
+    <div>
+      <h1>Harika Yarlagadda</h1>
+      <div class="links">
+        <a href="mailto:harika.yarlagadda2002@gmail.com">Email</a> ·
+        <a href="tel:6127042911">Phone</a> ·
+        <a href="https://linkedin.com/in/haarika-yarlagadda" target="_blank">LinkedIn</a> ·
+        <a href="https://github.com/HarikaYarly" target="_blank">GitHub</a>
+      </div>
+      <div style="margin-top:7px;font-size:1.07em;color:#535353;">Graduate research assistant, developer, and machine learning enthusiast.<br>MS Computer Science @ UMN Duluth</div>
+    </div>
+  </div>
+  <div class="section" id="education">
+    <h2>Education</h2>
+    <table class="info-table">
+      <tr>
+        <td><strong>University of Minnesota Duluth</strong></td>
+        <td>Aug 2023 - May 2025</td>
+        <td>MS Computer Science, CGPA: 3.87/4.00</td>
+      </tr>
+      <tr>
+        <td><strong>Bapatla Engineering College</strong></td>
+        <td>Aug 2019 - Apr 2023</td>
+        <td>B.Tech CSE, CGPA: 9.58/10.00</td>
+      </tr>
+    </table>
+  </div>
+  <div class="section" id="skills">
+    <h2>Technical Skills</h2>
+    <div class="chips">
+      <span class="chip">Python</span>
+      <span class="chip">Java</span>
+      <span class="chip">C</span>
+      <span class="chip">Machine Learning</span>
+      <span class="chip">Artificial Intelligence</span>
+      <span class="chip">Deep Learning</span>
+      <span class="chip">AutoML</span>
+      <span class="chip">OCI Data Science</span>
+      <span class="chip">Power BI</span>
+      <span class="chip">JavaScript</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">React</span>
+      <span class="chip">HTML/CSS</span>
+      <span class="chip">MySQL</span>
+      <span class="chip">Django</span>
+      <span class="chip">Git</span>
+      <span class="chip">Android Studio</span>
+      <span class="chip">AWS</span>
+      <span class="chip">Hadoop</span>
+      <span class="chip">VS Code</span>
+      <span class="chip">OOP</span>
+      <span class="chip">DSA</span>
+      <span class="chip">Software Design Principles</span>
+      <span class="chip">Agile Sprint Planning</span>
+      <span class="chip">Team Collaboration</span>
+      <span class="chip">Public Speaking</span>
+      <span class="chip">Problem-Solving</span>
+      <span class="chip">Proactive Learning</span>
+    </div>
+  </div>
+  <div class="section" id="projects">
+    <h2>Project Experience</h2>
+    <ul>
+      <li>
+        <b>Auto Insurance Customer Churn Detection</b> (Python, ML): <br>
+        Engineered Random Forest models to predict churn, reaching 74% accuracy using robust feature engineering and analytics.
+      </li>
+      <li>
+        <b>Banking System</b> (Java, SQL): <br>
+        Developed real-time banking app with Java & MySQL, implemented secure, scalable customer data solutions.
+      </li>
+      <li>
+        <b>Image Captioning Method</b> (Deep Learning, Python): <br>
+        Built neural model to generate visual descriptions; optimized training led to 20% accuracy gains.
+      </li>
+      <li>
+        <b>BulldogOnBoard</b> (Flutter, UI/UX, Git): <br>
+        Led mobile app team, streamlining onboarding for UMN students with collaborative sprint planning and event info integration.
+      </li>
+      <li>
+        <b>Web Developer Intern</b> (Java, MySQL, HTML/CSS/JS): <br>
+        Created responsive e-commerce site with secure user auth, cart, and order management.
+      </li>
+    </ul>
+  </div>
+  <div class="section" id="experience">
+    <h2>Professional Experience</h2>
+    <div class="timeline">
+      <div class="entry">
+        <strong>Graduate Research Assistant</strong><br>
+        University of Minnesota Duluth (Aug 2024-May 2025)<br>
+        Developed HIPAA-compliant neonatal health monitoring using GoPro APIs, Alexa, and wireless integration.
+      </div>
+      <div class="entry">
+        <strong>Graduate Teaching Assistant</strong><br>
+        University of Minnesota Duluth (Aug 2023-May 2024)<br>
+        Supported C programming students, course reviews, debug mentoring, and collaborative learning.
+      </div>
+      <div class="entry">
+        <strong>Web Developer Intern</strong><br>
+        Exposys Data Labs, Bengaluru (May-Jun 2022)<br>
+        Built secure e-commerce web app, managed SQL/Java scripts and backend operations.
+      </div>
+    </div>
+  </div>
+  <div class="section" id="certifications">
+    <h2>Certifications & Courses</h2>
+    <ul>
+      <li><b>Professional Development (Forage)</b>: BCG GenAI, Goldman Sachs IT Analysis, PwC Power BI - Jan 2025</li>
+      <li><b>Responsible AI</b> (Google Cloud, Jan 2025)</li>
+      <li><b>Generative AI with LLMs</b> (AWS, Aug 2024)</li>
+      <li><b>Intro to Generative AI</b> (Google Cloud, May 2024)</li>
+      <li><b>Machine Learning Specialization</b> (Stanford Univ., Jan 2024)</li>
+    </ul>
+  </div>
+</div>
+<script>
+// Simple animated particles background
+const canvas = document.getElementById('particlesCanvas');
+const ctx = canvas.getContext('2d');
+let width, height, particles = [];
+
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function createParticles() {
+  particles = [];
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.6 + 1.2,
+      dx: Math.random() * 0.8 - 0.4,
+      dy: Math.random() * 0.8 - 0.4,
+      color: `rgba(${100+Math.random()*120},${160+Math.random()*60},${240-Math.random()*80},0.68)`
+    });
+  }
+}
+createParticles();
+
+function drawParticles() {
+  ctx.clearRect(0, 0, width, height);
+  for (let p of particles) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    // Wrap
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    if (p.y < 0) p.y = height;
+    if (p.y > height) p.y = 0;
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+</script>
+</body>
+</html>
