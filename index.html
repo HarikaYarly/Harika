@@ -7,270 +7,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
   <style>
     html, body {
-      margin: 0; padding: 0;
-      width: 100%; height: 100%;
+      margin: 0; padding: 0; min-height: 100vh; width: 100vw;
       font-family: 'Montserrat', 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #7f53ac 0%, #9d50bb 35%, #6e44ff 90%);
-      min-height: 100vh;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #7f53ac 0%, #9d50bb 40%, #6e44ff 90%);
+      overflow-x: hidden; scroll-behavior: smooth;
     }
-    .particles {
-      position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh; z-index: 0;
-      pointer-events:none;
-    }
+    .particles { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
     .sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 70px;
-      height: 100vh;
-      z-index: 10;
-      background: rgba(127,83,172,0.18);
+      position: fixed; top: 0; left: 0; width: 72px; height: 100vh; z-index: 10;
+      background: rgba(127,83,172,0.18); box-shadow: 2px 0 18px #7f53ac60;
+      display: flex; flex-direction: column; align-items: center; gap: 24px; padding-top: 34px;
       backdrop-filter: blur(7px);
-      box-shadow: 2px 0 18px #7f53ac60;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 23px;
-      padding-top: 34px;
     }
-    .sidebar .avatar {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #6e44ff;
-      margin-bottom: 14px;
-    }
-    .nav-icons {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      margin-top: 20px;
-    }
-    .nav-icons a {
-      width: 38px; height: 38px;
-      display: flex;
-      align-items: center; justify-content: center;
+    .sidebar .avatar { width: 50px; height: 50px; border-radius: 50%; border: 2px solid #6e44ff; object-fit: cover; margin-bottom: 14px;}
+    .nav-icons { display: flex; flex-direction: column; gap: 28px; margin-top: 20px;}
+    .nav-icons a { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
       background: linear-gradient(135deg, #9d50bb 65%, #7f53ac 100%);
-      border-radius: 50%;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.46em;
-      box-shadow: 0 3px 10px #6e44ff31;
-      transition: transform 0.24s, background 0.3s;
-    }
-    .nav-icons a.active, .nav-icons a:hover {
-      background: linear-gradient(135deg, #fff 60%, #9d50bb 100%);
-      color: #9d50bb;
-      transform: scale(1.18);
-    }
-    .sidebar .external {
-      margin-top: auto;
-      margin-bottom: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-    .sidebar .external a {
-      font-size: 1.07em;
-      color: #fff;
-      background: none;
-      text-decoration: underline;
-      text-align: center;
-      transition: color 0.2s;
-    }
-    .sidebar .external a:hover { color: #ffc9e0; }
-    /* Fullscreen section styles */
+      border-radius: 50%; color: #fff; text-decoration: none; font-size: 1.46em; box-shadow: 0 3px 10px #6e44ff31; transition: transform 0.22s, background 0.32s;}
+    .nav-icons a.active, .nav-icons a:hover { background: linear-gradient(120deg, #fff 70%, #9d50bb 100%); color: #9d50bb; transform: scale(1.16);}
+    .sidebar .external { margin-top: auto; margin-bottom: 24px; display: flex; flex-direction: column; gap: 9px;}
+    .sidebar .external a { font-size: 1.07em; color: #fff; text-decoration: underline; text-align: center; transition: color 0.2s;}
+    .sidebar .external a:hover { color: #fbf0fa;}
     .section {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      position: relative;
-      z-index: 2;
-      opacity: 0.1;
-      transform: translateY(80px) scale(0.97);
-      transition: opacity 1.1s, transform 1.2s;
-      padding: 0 38px;
-      margin-left: 70px;
-      box-sizing: border-box;
-      /* glass morphic effect */
-      background: rgba(255,255,255,0.16);
-      border-radius: 32px;
-      box-shadow: 0 8px 38px #9d50bb18;
+      min-height: 96vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 2;
+      opacity: 0.1; transform: translateY(80px) scale(0.97); transition: opacity 1.1s, transform 1.1s;
+      margin-left: 72px; box-sizing: border-box; background: rgba(255,255,255,0.14); border-radius: 32px; box-shadow: 0 8px 38px #9d50bb18; padding: 40px 30px;
     }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .section h2 {
-      font-size: 2.32em;
-      color: #7f53ac;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      margin-top: 0;
-      text-shadow: 0 2px 14px #6e44ff21;
-      text-align: center;
-    }
-    .about-info {
-      max-width: 650px;
-      text-align: center;
-      font-size: 1.24em;
-      line-height: 1.6;
-      color: #381f49;
-      margin-bottom: 23px;
-      animation: fadeUp 1s;
-    }
-    .section .chips {
-      gap: 16px;
-      margin-top: 17px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-    .chip {
-      background: linear-gradient(135deg, #9d50bb 65%, #7f53ac 100%);
-      color: #fff;
-      padding: 11px 19px;
-      border-radius: 16px;
-      font-size: 1.04em;
-      font-weight: 500;
-      box-shadow: 0 2px 8px #8f4fb930;
-      margin-bottom:7px;
-      letter-spacing: 0.8px;
-    }
-    .section .info-table {
-      max-width: 600px;
-      margin: 0 auto 14px auto;
-      background: #fff4ffeb;
-      border-radius: 18px;
-      padding: 13px 20px 8px 20px;
-      font-size: 1.09em;
-      box-shadow: 0 2px 8px #6e44ff18;
-      margin-bottom: 19px;
-    }
+    .section.visible { opacity: 1; transform: translateY(0) scale(1);}
+    .section h2 { font-size: 2.18em; color: #7f53ac; margin-bottom: 19px; margin-top: 0; text-align: center; letter-spacing: 2px; text-shadow: 0 3px 20px #6e44ff21;}
+    .about-info { max-width: 630px; text-align: center; font-size: 1.2em; line-height: 1.6; color: #381f49; margin-bottom: 27px;}
+    .chips { gap: 15px; margin-top: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; display: flex;}
+    .chip { background: linear-gradient(132deg, #9d50bb 54%, #7f53ac 100%); color: #fff; padding: 10px 19px; border-radius: 16px; font-size: 1em; font-weight: 500;}
+    .section .info-table { max-width: 600px; margin: 0 auto 18px auto; background: #fff4ffeb; border-radius: 18px; padding: 16px 21px 13px 21px; font-size: 1em; box-shadow: 0 2px 8px #6e44ff18;}
     .info-table td { padding: 9px 16px; }
-    .projects-block {
-      width: 90%;
-      max-width: 900px;
-      display: flex;
-      flex-direction: column;
-      gap: 42px;
-      margin-top: 28px;
-      margin-bottom: 14px;
-    }
+    .projects-block { width: 94%; max-width: 900px; display: flex; flex-direction: column; gap: 44px; margin-top: 19px;}
     .project-card {
-      background: rgba(255,255,255,0.91);
-      border-radius: 18px;
-      box-shadow: 0 14px 38px #a069ea14;
-      padding: 30px 29px 22px 29px;
-      transition: box-shadow 0.53s, transform 0.44s;
-      transform: scale(0.98);
-      opacity: 0.97;
-      animation: fadeUpCard 0.9s;
+      background: rgba(255,255,255,0.98); border-radius: 20px; box-shadow: 0 8px 38px #a069ea15; padding: 25px 28px 15px 28px;
+      margin: 0 auto; transform: scale(0.98); opacity: 0.97; animation: fadeUpCard 0.9s; transition: box-shadow 0.47s, transform 0.34s;
     }
-    .project-card:hover {
-      box-shadow: 0 20px 52px #9d50bb3c;
-      transform: scale(1.03);
-      background: #e6e2fcce;
-    }
-    @keyframes fadeUpCard {
-      from {opacity:0.6; transform:translateY(50px);}
-      to {opacity:1; transform:translateY(0);}
-    }
-    .project-title {
-      color: #7f53ac;
-      font-size: 1.34em;
-      font-weight: 700;
-      margin-bottom: 7px;
-      letter-spacing: 1px;
-    }
-    .project-stack {
-      font-size: 1em;
-      color: #6e44ff;
-      margin-bottom: 9px;
-      letter-spacing:0.7px;
-      font-weight:500;
-      font-style:italic;
-    }
-    .project-details {
-      font-size: 1.1em;
-      color:#443148;
-      margin-bottom: 7px;
-      line-height: 1.67;
-    }
-    .project-role {
-      color:#9d50bb;
-      font-size:1em;
-      margin-bottom:6px;
-      font-style: italic;
-      font-weight:500;
-    }
-    .timeline {
-      border-left: 4px solid #9d50bb;
-      max-width: 760px;
-      margin: 0 auto;
-      padding-left: 32px;
-      position: relative;
-    }
-    .timeline .entry {
-      margin-bottom: 46px;
-      position: relative;
-      opacity: 0.97;
-      font-size:1.08em;
-      padding-left: 13px;
-      border-radius:9px;
-      transition: background 0.4s;
-      background: rgba(127,83,172,0.05);
-    }
+    .project-card:hover { box-shadow: 0 20px 60px #9d50bb2a; transform: scale(1.045); background: #e8e6fa;}
+    @keyframes fadeUpCard { from {opacity:0.6; transform:translateY(60px);} to {opacity:1; transform:translateY(0);} }
+    .project-title { color: #7f53ac; font-size: 1.24em; font-weight: 700; margin-bottom: 6px;}
+    .project-stack { font-size: 1em; color: #6e44ff; margin-bottom: 8px; letter-spacing:0.7px; font-weight:500; font-style:italic;}
+    .project-details { font-size: 1.09em; color:#443148; margin-bottom: 6px; line-height: 1.74;}
+    .project-role { color:#9d50bb; font-size:0.96em; margin-bottom:4px; font-style: italic; font-weight:500;}
+    .timeline { border-left: 4px solid #9d50bb; max-width: 760px; margin: 0 auto; padding-left: 32px; position: relative;}
+    .timeline .entry { margin-bottom: 52px; position: relative; opacity: 0.96; font-size:1.09em; padding-left: 13px; border-radius:11px; background: rgba(127,83,172,0.06);}
     .timeline .entry:hover {background: #e6e2fc7d;}
-    .timeline .entry::before {
-      content: '';
-      position: absolute;
-      left: -38px; top: 21px;
-      width: 22px; height: 22px;
-      background: #fff;
-      border-radius: 50%;
-      border: 3px solid #9d50bb;
-      box-shadow: 0 2px 12px #9d50bb90;
-    }
-    .entry strong { font-size:1.18em; color:#6e44ff;}
-    .cert-list {
-      max-width: 620px;
-      margin: 0 auto;
-      background: linear-gradient(110deg, #f0e8ff 60%, #e6e2fc 100%);
-      border-radius: 18px;
-      padding: 24px 29px 18px 29px;
-      box-shadow: 0 4px 18px #7f53ac15;
-      font-size:1.09em;
-      margin-bottom:34px;
-      animation: fadeUpCard 0.9s;
-    }
-    .cert-list li {margin-bottom: 12px;}
+    .timeline .entry::before {content: ''; position: absolute; left: -39px; top: 25px; width: 22px; height: 22px; background: #fff; border-radius: 50%; border: 3px solid #9d50bb; box-shadow: 0 2px 12px #9d50bb90;}
+    .entry strong {font-size:1.18em; color:#6e44ff;}
+    .cert-list {max-width: 620px; margin: 0 auto; background: linear-gradient(110deg, #f0e8ff 60%, #e6e2fc 100%); border-radius: 18px; padding: 22px 27px 18px 27px; box-shadow: 0 4px 18px #7f53ac10; font-size:1.06em; margin-bottom:17px;}
+    .cert-list li {margin-bottom: 13px;}
     .cert-list b {color:#7f53ac;}
-    .footer {
-      text-align: center;
-      color: #6943b9;
-      font-size:1em;
-      padding-bottom:28px;
-      margin-left: 70px;
-      padding-top:12px;
-      letter-spacing:1px;
-      background: rgba(255,255,255,0.14);
-    }
-    @media (max-width: 700px){
-      .sidebar {width:52px; padding-top:14px;}
-      .sidebar .avatar {width:38px;height:38px;}
-      .container, .section, .footer {margin-left:52px; padding:10px 3px;}
-    }
-    @media (max-width: 520px){
-      .sidebar {display:none;}
-      .section, .footer {margin-left:0;}
-    }
-    @keyframes fadeUp {
-      to {opacity:1; transform:translateY(0);}
-    }
+    .footer {text-align:center; color:#6943b9; font-size:1em; padding-bottom:25px; margin-left:72px; background: rgba(255,255,255,0.10);}
+    @media (max-width: 800px){ .sidebar {width:48px;} .sidebar .avatar {width:35px;height:35px;} .footer, .section {margin-left:48px;} .projects-block {width:99%;} .section {padding: 15px 3px;} }
+    @media (max-width: 560px){ .sidebar {display:none;} .footer, .section {margin-left:0;} }
   </style>
 </head>
 <body>
@@ -295,28 +86,22 @@
 <section class="section" id="about">
   <h2>About Me</h2>
   <div class="about-info">
-    Hi, I'm Harika! I'm a creative technologist and analyst with a passion for building robust digital solutions and making sense of complex data. My projects blend modern web development, machine learning, and a love for beautiful design. Whether collaborating or working independently, I thrive when solving real-world challenges and helping teams innovate in the IT industry.
+    Hi, I'm Harika! I blend creative coding, strong analysis, and a passion for user experience, leveraging modern tech and teamwork to build robust, meaningful solutions for the IT industry.
   </div>
   <div class="chips">
-    <span class="chip">Development</span>
-    <span class="chip">Analysis</span>
-    <span class="chip">Teamwork</span>
-    <span class="chip">Agile</span>
-    <span class="chip">Problem Solving</span>
-    <span class="chip">Continuous Learning</span>
+    <span class="chip">Development</span><span class="chip">Analysis</span><span class="chip">Teamwork</span>
+    <span class="chip">Agile</span><span class="chip">Problem Solving</span><span class="chip">Continuous Learning</span>
     <span class="chip">Creativity</span>
   </div>
 </section>
 <section class="section" id="skills">
   <h2>Skills & Technologies</h2>
   <div class="chips">
-    <span class="chip">Python</span><span class="chip">Java</span>
-    <span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Node.js</span>
-    <span class="chip">SQL/MySQL</span><span class="chip">HTML/CSS</span>
-    <span class="chip">Django</span><span class="chip">Machine Learning</span>
-    <span class="chip">Deep Learning</span><span class="chip">Power BI</span>
-    <span class="chip">AWS</span><span class="chip">UI/UX</span>
-    <span class="chip">Data Visualization</span><span class="chip">Project Management</span>
+    <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span>
+    <span class="chip">React</span><span class="chip">Node.js</span><span class="chip">SQL/MySQL</span>
+    <span class="chip">HTML/CSS</span><span class="chip">Django</span><span class="chip">Machine Learning</span>
+    <span class="chip">Deep Learning</span><span class="chip">Power BI</span><span class="chip">AWS</span>
+    <span class="chip">UI/UX</span><span class="chip">Data Visualization</span><span class="chip">Project Management</span>
   </div>
 </section>
 <section class="section" id="education">
@@ -342,7 +127,7 @@
       <div class="project-stack">Python · Machine Learning · Data Analytics</div>
       <div class="project-role">Data Scientist</div>
       <div class="project-details">
-        Researched and engineered advanced ML models for predicting customer attrition in insurance. Led data wrangling and feature extraction, optimized random forest and XGBoost classifiers. Built intuitive dashboards for visualizing churn patterns, enabling management to target retention efforts and improve satisfaction. Results achieved: <b>74% accuracy</b> on test data and deployed actionable insights for future campaigns.
+        Led ML model development predicting insurance customer churn. Delivered 74% accuracy, managed dynamic dashboards and presented actionable strategies to reduce attrition.
       </div>
     </div>
     <div class="project-card">
@@ -350,7 +135,7 @@
       <div class="project-stack">Java · MySQL · Backend · Security</div>
       <div class="project-role">Full Stack Developer</div>
       <div class="project-details">
-        Architected and implemented a dynamic banking platform focusing on account security and transaction speed. Developed RESTful APIs and user authentication modules with rigorous access controls. Integrated easy-to-use interface for customers to seamlessly manage funds, transfer, and review activity. Optimized SQL for real-time performance; regularly stress tested.
+        Built a secure banking platform, developed APIs, authentication, and optimized SQL for performance. Collaborated for a seamless user experience and robust risk protection.
       </div>
     </div>
     <div class="project-card">
@@ -358,7 +143,7 @@
       <div class="project-stack">Python · Deep Learning · Computer Vision</div>
       <div class="project-role">ML Engineer</div>
       <div class="project-details">
-        Created an end-to-end deep learning system combining CNNs and LSTMs for automated image-to-text conversion. Leveraged transfer learning and hyperparameter search to boost caption fidelity, improving accuracy by over 20%. Evaluated using MS COCO and custom benchmarks, ensuring generalizability. Presented results at local data science meetups.
+        Engineered a neural net system converting images to text (CNNs+LSTMs), improved accuracy +20% with custom data augmentation and transfer learning.
       </div>
     </div>
     <div class="project-card">
@@ -366,7 +151,7 @@
       <div class="project-stack">Flutter · UI/UX · Agile</div>
       <div class="project-role">Team Lead / UI Designer</div>
       <div class="project-details">
-        Led a cross-functional team in agile sprints to design and launch a campus onboarding app for UMN students. Developed intuitive flows for accessing campus resources, events, and peer support, and integrated maps plus push notification features. Received positive feedback from pilot groups for usability and completeness.
+        Led design and launch of a mobile onboarding app for UMN students, integrating maps, events, and peer support for campus engagement.
       </div>
     </div>
     <div class="project-card">
@@ -374,7 +159,7 @@
       <div class="project-stack">HTML/CSS · JavaScript · Java · MySQL</div>
       <div class="project-role">Web Developer Intern</div>
       <div class="project-details">
-        Deployed a scalable, secure online storefront with real-time product management and secure checkout flow. Implemented user authentication, dynamic product pages, secure transactions, and seamless UI. Assisted with backend performance tuning for heavy user loads.
+        Built secure, scalable storefront with live product updates, safe authentication, and optimized backend for thousands of users.
       </div>
     </div>
   </div>
@@ -385,45 +170,35 @@
     <div class="entry">
       <strong>Graduate Research Assistant</strong> <br>
       UMN Duluth · Aug ’24–May ’25 <br>
-      <span class="details">Created HIPAA-compliant neonatal monitoring tools via GoPro APIs, Alexa skills, and wireless integration. Presented findings in research meetings and co-authored project reports.</span>
+      <span class="details">Created HIPAA-compliant neonatal monitoring tools, wrote reports, and presented findings at national events.</span>
     </div>
     <div class="entry">
       <strong>Teaching Assistant, C Programming</strong> <br>
       UMN Duluth · Aug ’23–May ’24 <br>
-      <span class="details">Mentored students, provided expert debugging and feedback, and fostered collaboration on multiple programming assignments. Enhanced grading system for greater transparency.</span>
+      <span class="details">Mentored students, streamlined grading, and facilitated collaboration through coding workshops.</span>
     </div>
     <div class="entry">
       <strong>Web Developer Intern</strong> <br>
       Exposys Data Labs, Bengaluru · May–Jun ’22 <br>
-      <span class="details">Developed backend modules for scalable secured e-commerce applications. Improved process workflows and implemented optimizations for better scalability.</span>
+      <span class="details">Developed backend e-commerce modules, optimized performance, and contributed to code reviews.</span>
     </div>
   </div>
 </section>
 <section class="section" id="certifications">
   <h2>Certifications & Courses</h2>
   <ul class="cert-list">
-    <li>
-      <b>Professional Development Programs</b>: Forage (BCG GenAI, Goldman Sachs IT Security, PwC Power BI)
-    </li>
-    <li>
-      <b>Responsible AI</b>: Google Cloud, Jan ’25
-    </li>
-    <li>
-      <b>Generative AI with LLMs</b>: AWS, Aug ’24
-    </li>
-    <li>
-      <b>Machine Learning Specialization</b>: Stanford University, Jan ’24
-    </li>
-    <li>
-      <b>Various Hackathons & Technical Workshops</b>: 2022–2025
-    </li>
+    <li><b>Professional Development Programs</b>: Forage (BCG GenAI, Goldman Sachs IT Security, PwC Power BI)</li>
+    <li><b>Responsible AI</b>: Google Cloud, Jan ’25</li>
+    <li><b>Generative AI with LLMs</b>: AWS, Aug ’24</li>
+    <li><b>Machine Learning Specialization</b>: Stanford University, Jan ’24</li>
+    <li><b>Hackathons & Workshops</b>: 2022–2025</li>
   </ul>
 </section>
 <div class="footer">
   <small>© 2025 Harika Yarlagadda. Designed uniquely for the IT industry using HTML, CSS & JS. 💜</small>
 </div>
 <script>
-  // Particles animated background
+  // Particle animation
   const canvas = document.getElementById('particlesCanvas');
   const ctx = canvas.getContext('2d');
   let width, height, particles = [];
@@ -466,7 +241,7 @@
     requestAnimationFrame(drawParticles);
   }
   drawParticles();
-  // Section reveals on scroll
+  // Section reveal on scroll
   function revealSections() {
     document.querySelectorAll('.section').forEach(section=>{
       const rect = section.getBoundingClientRect();
@@ -483,7 +258,7 @@
       e.preventDefault();
       const sec = document.querySelector(link.getAttribute('href'));
       if(sec){
-        window.scrollTo({top:sec.offsetTop-10,behavior:'smooth'});
+        window.scrollTo({top:sec.offsetTop-2,behavior:'smooth'});
       }
     });
   });
